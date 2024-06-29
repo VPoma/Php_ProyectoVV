@@ -9,7 +9,6 @@
 <?//Php endif;?>-->
 
 <form action="<?=base_url?>rincidencias/save" method="POST" enctype="multipart/form-data">
-
 <table>
     <tr>
         <th style="width: 300px;">
