@@ -164,20 +164,25 @@
     </tr>
     <tr>
         <th style="width: 300px;" colspan="2">
-            <label for="imagen" style="margin-left: 3%;">Imagen</label>
-            <input type="text" name="imagen" style="width: 95%;margin-left: 3%" value="<?=isset($inc) && is_object($inc) ? $inc->imagen : ''; ?>" required/>
+            <label for="imagen" style="margin-left: 3%;">Imágen</label>
+            <?Php if(isset($inc) && is_object($inc) && !empty($inc->imagen)):?>
+                <img src="<?=base_url?>uploads/images/<?=$inc->imagen?>" class="thumb_edit"/>
+            <?Php endif; ?>
+            <div class="subeimg">
+                <input type="file" name="imagen" style="margin-left: 3%;"/>    
+            </div>
         </th>
     </tr>
 </table>
-
-    <input type="submit" value="Aceptar" style="margin-left: 8%;" class="button solid-color">
+<div style="margin-bottom: -5%;">
+    <input type="submit" value="Aceptar" style="margin-left: 8%; " class="button solid-color">
 
     <div class="fila-2">
         <a href="<?=base_url?>rincidencias/gestion" style="margin-right: 100px;" class="button extra-color regresar">
             Regresar
         </a>
     </div>
-
+</div>
 </form>
 
 

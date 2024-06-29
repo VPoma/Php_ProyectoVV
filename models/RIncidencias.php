@@ -289,7 +289,12 @@ Class Rincidencias{
     }
 
     public function edit(){
-        $sql = "UPDATE registroincidencias SET id_camara = {$this->getId_camara()}, referencia = '{$this->getReferencia()}', id_tipodelito = {$this->getId_tipodelito()}, id_medioalerta = {$this->getid_medioalerta()}, descripcion = '{$this->getDescripcion()}', fecha = '{$this->getFecha()}', horaincid = '{$this->getHoraincid()}', intervino = '{$this->getIntervino()}', horainterv = '{$this->getHorainterv()}', id_unidad = {$this->getId_unidad()}, nunidad = '{$this->getNunidad()}', imagen = '{$this->getImagen()}', observaciones = '{$this->getObservaciones()}', id_supervisor = {$this->getId_supervisor()}, id_cecom = {$this->getId_cecom()}, id_pnp = {$this->getId_pnp()}, turno = '{$this->getTurno()}' WHERE id = {$this->getId()};";
+        $sql = "UPDATE registroincidencias SET id_camara = {$this->getId_camara()}, referencia = '{$this->getReferencia()}', id_tipodelito = {$this->getId_tipodelito()}, id_medioalerta = {$this->getid_medioalerta()}, descripcion = '{$this->getDescripcion()}', fecha = '{$this->getFecha()}', horaincid = '{$this->getHoraincid()}', intervino = '{$this->getIntervino()}', horainterv = '{$this->getHorainterv()}', id_unidad = {$this->getId_unidad()}, nunidad = '{$this->getNunidad()}', observaciones = '{$this->getObservaciones()}', id_supervisor = {$this->getId_supervisor()}, id_cecom = {$this->getId_cecom()}, id_pnp = {$this->getId_pnp()}, turno = '{$this->getTurno()}' ";
+        if($this->getImagen() != null){
+            $sql .= ", imagen = '{$this->getImagen()}'";
+        }
+        
+        $sql .= " WHERE id = {$this->getId()};";
         $save = $this->db->query($sql);
 
         $result = false;

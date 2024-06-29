@@ -77,7 +77,10 @@
         <th class="t-i" colspan="3">▀ Imagen</th>
     </tr>
     <tr>
-        <td class="t-i" colspan="3"> ○ <?=$inc->imagen?></td>
+        <td class="t-i" colspan="3"> ○ <?=$inc->imagen?>
+        <br>
+        <img src="<?=base_url?>uploads/images/<?=$inc->imagen?>" class="thumb"/>
+        </td>
     </tr>
 </table>
 
@@ -86,7 +89,7 @@
 -->
 
 <!--<div class="fila-1" style="margin-bottom: -5.8%;">-->
-<div class="fila-1">
+<div class="fila-1" style="margin-bottom: -5%;">
     <a href="<?=base_url?>rincidencias/editar&id=<?=$inc->id?>" class="button solid-color">
         Editar
     </a>

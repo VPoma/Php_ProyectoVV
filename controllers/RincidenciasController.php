@@ -46,15 +46,33 @@ Class RincidenciasController{
                 $incidencias->setHorainterv($horainterv);
                 $incidencias->setId_unidad($unidad);
                 $incidencias->setNunidad($numero);
-                $incidencias->setImagen($imagen);
                 $incidencias->setObservaciones($observaciones);
                 $incidencias->setId_operador($operador);
                 $incidencias->setId_supervisor($supervisor);
                 $incidencias->setId_cecom($cecom);
                 $incidencias->setId_pnp($pnp);
                 $incidencias->setTurno($turno);
+                //$incidencias->setImagen($imagen);
+
+                //Guardar la imagen
+                if(isset($_FILES['imagen'])){
+                    $file = $_FILES['imagen'];
+                    $filename = $file['name'];
+                    $mimetype = $file['type'];
+
+                    if($mimetype == "image/jpg" || $mimetype == 'image/jpeg' || $mimetype == 'image/png' || $mimetype == 'image/gif'){
+                            
+                        if(!is_dir('uploads/images')){
+                            mkdir('uploads/images', 0777, true);
+                        }
+
+                        move_uploaded_file($file['tmp_name'],'uploads/images/'.$filename);
+                        $incidencias->setImagen($filename);
+                    }
+                }
 
                 //$save = $incidencias->save();
+                
                 if(isset($_GET['id'])){
                     $id = $_GET['id'];
                     $incidencias->setId($id);
